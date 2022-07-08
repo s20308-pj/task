@@ -6,9 +6,11 @@ import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,27 +21,32 @@ public class TaskController {
     private DbService service;
 
     @GetMapping
-    List<TaskDto> getTask() {
+    public ResponseEntity<List<TaskDto>> getTask() {
         List<Task> tasks = service.getAllTasks();
-        return taskMApper.mapToTaskDtoList(tasks);
+        return ResponseEntity.ok(taskMApper.mapToTaskDtoList(tasks));
     }
 
     @GetMapping("{taskId}")
-    TaskDto getTaskDto(@PathVariable Long taskId) {
-        Task task = service.findById(taskId);
-        return taskMApper.mapToTaskDto(task);
+    ResponseEntity<TaskDto> getTaskDto(@PathVariable Long taskId) throws TaskNotFoundException {
+        return new ResponseEntity<>(taskMApper.mapToTaskDto(service.getTask(taskId)), HttpStatus.OK);
     }
 
     @DeleteMapping("{taskId}")
-    void deleteTask(@PathVariable Long taskId) {
+    public ResponseEntity<Void> deleteTask(@PathVariable Long taskId) {
+        service.deleteTask(taskId);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping
-    TaskDto updateTask( TaskDto taskDto) {
-        return new TaskDto(1L, "test title", "test_content");
+    public ResponseEntity<TaskDto> updateTask(@RequestBody TaskDto taskDto) {
+        Task task = taskMApper.mapToTask(taskDto);
+        Task savedTask = service.saveTask(task);
+        return ResponseEntity.ok(taskMApper.mapToTaskDto(savedTask));
     }
 
-    @PostMapping
-    void createTask(TaskDto taskDto) {
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> createTask(@RequestBody TaskDto taskDto) {
+        service.saveTask(taskMApper.mapToTask(taskDto));
+        return ResponseEntity.ok().build();
     }
 }
