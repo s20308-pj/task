@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Badges {
-    @JsonProperty("vote")
-    private int vote;
+    @JsonProperty("votes")
+    private int votes;
     @JsonProperty("attachmentsByType")
     private AttachmentsByType attachment;
 }
