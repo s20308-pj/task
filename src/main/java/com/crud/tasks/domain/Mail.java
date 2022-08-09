@@ -3,7 +3,6 @@ package com.crud.tasks.domain;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.mail.SimpleMailMessage;
 
 import java.util.Optional;
 
