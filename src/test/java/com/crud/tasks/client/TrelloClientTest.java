@@ -34,6 +34,7 @@ class TrelloClientTest {
         //Given
         when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
         when(trelloConfig.getTrelloAppKey()).thenReturn("test");
+        when(trelloConfig.getTrelloAppToken()).thenReturn("test");
         when(trelloConfig.getTrelloUsername()).thenReturn("test");
 
         TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
@@ -89,6 +90,7 @@ class TrelloClientTest {
         //Given
         when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
         when(trelloConfig.getTrelloAppKey()).thenReturn("test");
+        when(trelloConfig.getTrelloAppToken()).thenReturn("test");
         when(trelloConfig.getTrelloUsername()).thenReturn("test");
 
 

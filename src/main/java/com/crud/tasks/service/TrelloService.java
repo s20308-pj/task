@@ -20,7 +20,7 @@ public class TrelloService {
     private final SimpleEmailService emailService;
     private final AdminConfig adminConfig;
 
-    public List<TrelloBoardDto> fetchTrelloBoards() {
+    public List<TrelloBoardDto>  fetchTrelloBoards() {
         return trelloClient.getTrelloBoards();
     }
 
@@ -33,7 +33,6 @@ public class TrelloService {
                         .message("New card " + trelloCardDto.getName() + " has been created")
                         .toCc(null).build()
         ));
-
         return newCard;
     }
 }
