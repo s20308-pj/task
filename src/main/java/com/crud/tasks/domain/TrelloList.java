@@ -5,10 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class TaskDto {
-    private Long id;
-    private String title;
-    private String content;
+@NoArgsConstructor
+public class TrelloList {
+    private String id;
+    private String name;
+    private boolean isClosed;
 }
