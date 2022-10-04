@@ -24,23 +24,20 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.2'
-    implementation 'mysql:mysql-connector-java:8.0.29'
-    runtimeOnly 'org.postgresql:postgresql:42.4.0'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.7.4'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    testCompileOnly 'org.projectlombok:lombok:1.18.24'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
-    testImplementation 'com.google.code.gson:gson:2.9.1'
-
-
-
-
-
-    testImplementation group: 'org.springdoc', name: 'springdoc-openapi-webmvc-core', version: '1.6.9'
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.9'
     implementation group: 'org.springdoc', name: 'springdoc-openapi-webflux-ui', version: '1.6.9'
+    implementation 'mysql:mysql-connector-java:8.0.29'
+    runtimeOnly 'org.postgresql:postgresql:42.4.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.google.code.gson:gson:2.9.1'
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    testImplementation group: 'org.springdoc', name: 'springdoc-openapi-webmvc-core', version: '1.6.9'
 
 
 //	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.7.0'

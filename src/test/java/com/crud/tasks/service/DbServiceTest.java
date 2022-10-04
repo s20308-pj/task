@@ -16,24 +16,6 @@ class DbServiceTest {
     @Autowired
     private DbService dbService;
 
-    @Test
-    void getAllTasksTest() {
-        //Given
-        Task task1 = new Task();
-        Task task2 = new Task();
-        dbService.saveTask(task1);
-        dbService.saveTask(task2);
-
-        //When
-        List<Task> tasksFromDb = dbService.getAllTasks();
-
-        //Then
-        assertEquals(2, tasksFromDb.size());
-
-        //Clean
-        dbService.deleteTask(task1.getId());
-        dbService.deleteTask(task2.getId());
-    }
 
     @Test
     void saveTaskAndGetTaskTest() {
@@ -46,7 +28,6 @@ class DbServiceTest {
         //Clean
         dbService.deleteTask(task.getId());
     }
-
     @Test
     void deleteTaskTest() {
         //Given
